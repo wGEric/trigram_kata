@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/trigram'
+require_relative '../lib/generator'
+
+if ARGV.size > 2
+  size = ARGV.shift.to_i
+  prompt = ARGV.shift
+  trigram = Trigram.new(ARGF.read)
+  puts Generator.generate(trigram, prompt, size)
+else
+  puts "Usage: trigram size prompt file1 [file2 ..]"
+  puts "Example: trigram 40 'magical child' samples/aesops_fables.txt"
+end
