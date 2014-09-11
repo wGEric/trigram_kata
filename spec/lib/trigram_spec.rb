@@ -9,4 +9,13 @@ RSpec.describe Trigram do
     specify{ expect(subject.get("over the")).to eq ["lazy"] }
     specify{ expect(subject.get("the lazy")).to eq ["dog"] }
   end
+
+  context "finds all words after" do
+    let(:text){ "I wish I may I wish I might" }
+
+    subject { described_class.new(text) }
+
+    specify{ expect(subject.get("wish I")).to eq ["may", "might"] }
+    specify{ expect(subject.get("I wish")).to eq ["I", "I"] }
+  end
 end

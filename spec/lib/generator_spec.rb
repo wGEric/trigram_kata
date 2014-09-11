@@ -8,7 +8,7 @@ RSpec.describe Generator do
   subject { described_class }
 
   it "generates text" do
-    generated = subject.generate(trigram, "the quick", 5)
-    expect(generated.split(" ").size).to eq(5)
+    generated = subject.generate(trigram, "the quick", 4)
+    expect(generated.split(" ").size).to eq(4)
   end
 end
