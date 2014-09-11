@@ -1,4 +1,6 @@
 module Generator
+  PUNC = %w{. ? !}.inject([]){ |all, punc| all + [punc, "#{punc}\""]}
+
   def self.generate(trigram, prompt, size)
     @lookup = prompt.split
     @contents = @lookup.dup
@@ -14,6 +16,8 @@ module Generator
       new_word = possible_words.sample
       @lookup.shift
       @lookup << new_word
+
+      new_word = new_word.capitalize if new_word.end_with?(*PUNC)
 
       @contents << new_word
     end
